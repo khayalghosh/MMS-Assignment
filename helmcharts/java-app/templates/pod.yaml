@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: java-app
+    run: java-app
+  name: java-app
+spec:
+  containers:
+  - image: mmaacr01.azurecr.io/myapp:1.7
+    name: java-app
+    resources: {}
+    volumeMounts:
+      - name: log
+        mountPath: /var/log
+  volumes:
+  - name: log
+    persistentVolumeClaim:
+      claimName: myapp-log-pvc
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
