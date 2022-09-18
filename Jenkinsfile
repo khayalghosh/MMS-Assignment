@@ -13,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                             sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
-                            sh 'az acr login --name $REPO --resource-group $RESOURCE_GROUP --expose-token'
+                            sh 'az acr login --name $REPO --expose-token'
                             sh 'docker build -t $REPO/$IMAGE_NAME:$TAG . '
                             sh 'docker push $REPO/$IMAGE_NAME:$TAG'
                 }
