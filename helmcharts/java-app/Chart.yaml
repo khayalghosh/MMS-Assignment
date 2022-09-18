@@ -1,6 +1,8 @@
 apiVersion: v2
 name: java-app
 description: A Helm chart for Kubernetes
+ChartVersion: 1.0
+AppVersion: 1.0
 
 # A chart can be either an 'application' or a 'library' chart.
 #

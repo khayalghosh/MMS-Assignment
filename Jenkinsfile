@@ -2,19 +2,17 @@ pipeline {
     agent any
 
     environment {
-        AZURE_SUBSCRIPTION_ID='c2c132c7-4db7-48a8-b6da-7d3160f0821b'
-        RESOURCE_GROUP='MMS-Assignment'
-        REPO="mmsacr01.azureacr.io"
-        REGISTRY_NAME="mmsacr01"
+        USERNAME="khayalghosh"
+        REPO="docker.io/khayalghosh"
         IMAGE_NAME="java-app"
         TAG="1.0"
+        REGISTRY_SECRET="MTEzMjA0a2ljYWQ="
     }
 
     stages {
         stage('Build') {
-            steps {
-                            sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
-                            sh 'az acr login --name $REGISTRY_NAME --expose-token'
+            steps {         
+                            sh 'docker login $REPO -u $USERNAME -p $(echo "$REGISTRY_SECRET" | base64 --decode)'
                             sh 'docker build -t $REPO/$IMAGE_NAME:$TAG . '
                             sh 'docker push $REPO/$IMAGE_NAME:$TAG'
                 }
