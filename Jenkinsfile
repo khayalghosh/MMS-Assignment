@@ -5,7 +5,7 @@ pipeline {
         USERNAME="khayalghosh"
         REPO="docker.io/khayalghosh"
         IMAGE_NAME="java-app"
-        TAG="1.0"
+        TAG="1.1"
         REGISTRY_SECRET="MTEzMjA0a2ljYWQ="
     }
 
