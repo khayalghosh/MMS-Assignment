@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AZURE_SUBSCRIPTION_ID='c2c132c7-4db7-48a8-b6da-7d3160f0821b'
-        CONTAINER_REGISTRY='mmsacr01.azureacr.io'
+        CONTAINER_REGISTRY='mmsacr01'
         RESOURCE_GROUP='MMS-Assignment'
         REPO="mmsacr01.azureacr.io"
         IMAGE_NAME="java-app"
