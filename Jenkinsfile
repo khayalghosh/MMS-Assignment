@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         AZURE_SUBSCRIPTION_ID='c2c132c7-4db7-48a8-b6da-7d3160f0821b'
-        CONTAINER_REGISTRY='mmsacr01'
         RESOURCE_GROUP='MMS-Assignment'
         REPO="mmsacr01.azureacr.io"
         IMAGE_NAME="java-app"
@@ -14,8 +13,8 @@ pipeline {
         stage('Build') {
             steps {
                             sh 'az account set -s $AZURE_SUBSCRIPTION_ID'
-                            sh 'az acr login --name $CONTAINER_REGISTRY --resource-group $RESOURCE_GROUP'
-                            sh 'az acr build --image $REPO/$IMAGE_NAME:$TAG --registry $CONTAINER_REGISTRY --file Dockerfile . '
+                            sh 'az acr login --name $REPO --resource-group $RESOURCE_GROUP --expose-token'
+                            sh 'docker build -t $REPO/$IMAGE_NAME:$TAG . '
                             sh 'docker push $REPO/$IMAGE_NAME:$TAG'
                 }
             }
