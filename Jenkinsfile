@@ -1,5 +1,5 @@
 pipeline {
-    agent worker-1
+    agent any
 
     environment {
         USERNAME="khayalghosh"
